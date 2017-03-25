@@ -5,7 +5,7 @@ var User = {
 	loadList: function(){
 		return m.request({
 			method: 'GET',
-			url: 'http://rem-rest-api.herokuapp.com/api/users',
+			url: 'https://rem-rest-api.herokuapp.com/api/users',
 			withCredentials: true
 		}).then(function(result){
 			User.list = result.data;
