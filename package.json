@@ -1,0 +1,26 @@
+{
+  "name": "mithril-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack src/index.js bin/app.js --watch"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mandeldl/mithril-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mandeldl/mithril-playground/issues"
+  },
+  "homepage": "https://github.com/mandeldl/mithril-playground#readme",
+  "dependencies": {
+    "mithril": "^1.0.1",
+    "webpack": "^2.3.2"
+  }
+}
