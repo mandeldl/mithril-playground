@@ -63,21 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var m = __webpack_require__(2);
-
-var MyComponent = __webpack_require__(6);
-
-m.mount(document.body, MyComponent);
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 var g;
@@ -104,7 +94,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, global) {new function() {
@@ -1270,10 +1260,10 @@ m.vnode = Vnode
 if (true) module["exports"] = m
 else window.m = m
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5).setImmediate, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4).setImmediate, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -1459,7 +1449,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -1649,10 +1639,10 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -1705,22 +1695,58 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(4);
+__webpack_require__(3);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var m = __webpack_require__(1);
+
+// var MyComponent = require('./mycomponent');
+var UserList = __webpack_require__(6);
+
+m.mount(document.body, UserList);
+
+/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var m = __webpack_require__(2);
+var m = __webpack_require__(1);
+var User = __webpack_require__(7);
 
 module.exports = {
-	view: function () {
-		return m('h1', {class: 'testClass', id:'testId', data: 'test-data'}, 'Hello from a module');
+	oninit: User.loadList,
+	view: function() {
+		return m('ul.user-list', User.list.map(function(user) {
+			return m('li.user-list-item', user.firstName + ' ' + user.lastName);
+		}));
+	} 
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var m = __webpack_require__(1);
+
+var User = {
+	list: [],
+	loadList: function(){
+		return m.request({
+			method: 'GET',
+			url: 'http://rem-rest-api.herokuapp.com/api/users',
+			withCredentials: true
+		}).then(function(result){
+			User.list = result.data;
+		});
 	}
 }
+
+module.exports = User;
 
 /***/ })
 /******/ ]);

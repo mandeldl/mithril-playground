@@ -1,5 +1,6 @@
 var m = require('mithril');
 
-var MyComponent = require('./mycomponent');
+// var MyComponent = require('./mycomponent');
+var UserList = require('./views/UserList');
 
-m.mount(document.body, MyComponent);
+m.mount(document.body, UserList);
