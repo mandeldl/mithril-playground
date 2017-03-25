@@ -72,7 +72,9 @@
 
 var m = __webpack_require__(2);
 
-m.render(document.body, 'Hello world');
+var MyComponent = __webpack_require__(6);
+
+m.mount(document.body, MyComponent);
 
 /***/ }),
 /* 1 */
@@ -1707,6 +1709,18 @@ __webpack_require__(4);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var m = __webpack_require__(2);
+
+module.exports = {
+	view: function () {
+		return m('h1', {class: 'testClass', id:'testId', data: 'test-data'}, 'Hello from a module');
+	}
+}
 
 /***/ })
 /******/ ]);

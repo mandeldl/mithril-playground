@@ -1,3 +1,5 @@
 var m = require('mithril');
 
-m.render(document.body, 'Hello world');
+var MyComponent = require('./mycomponent');
+
+m.mount(document.body, MyComponent);
